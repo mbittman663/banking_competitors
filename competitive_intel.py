@@ -2,6 +2,27 @@ from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 import feedparser
+import yagmail
+
+# -----------------------------
+# Email Configuration
+# -----------------------------
+EMAIL_SENDER = "your_email@gmail.com"       # Replace with your email
+EMAIL_PASSWORD = "your_app_password"       # For Gmail, generate App Password
+EMAIL_RECIPIENTS = ["team@example.com"]   # List of recipients
+EMAIL_SUBJECT = "Weekly Competitive Intelligence Digest"
+
+def send_email(digest_text):
+    """
+    Sends the digest via email using yagmail.
+    """
+    yag = yagmail.SMTP(user=EMAIL_SENDER, password=EMAIL_PASSWORD)
+    yag.send(
+        to=EMAIL_RECIPIENTS,
+        subject=EMAIL_SUBJECT,
+        contents=digest_text
+    )
+    print("✅ Digest sent via email!")
 
 # -----------------------------
 # Step 1: Define competitor RSS feeds
