@@ -119,5 +119,9 @@ if __name__ == "__main__":
     summaries = fetch_and_summarize()
     print("Generating weekly digest...")
     digest = generate_digest(summaries)
+
     print("\n=== WEEKLY COMPETITIVE INTEL DIGEST ===\n")
     print(digest)
+
+    # Send digest via email
+    send_email(digest)
