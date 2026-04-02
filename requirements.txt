@@ -2,3 +2,5 @@ langchain
 openai 
 feedparser 
 yagmail
+langchain-community 
+langchain-openai
